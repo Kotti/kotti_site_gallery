@@ -14,7 +14,7 @@ setup(name='kotti_site_gallery',
       description="Event collection for Kotti sites",
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
-        "Development Status :: 5 - Alpha",
+        "Development Status :: 4 - Beta",
         "Programming Language :: Python",
         "Framework :: Pylons",
         "Topic :: Internet :: WWW/HTTP",
