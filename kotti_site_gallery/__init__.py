@@ -5,7 +5,8 @@ import kotti.static as ks
 
 
 lib_kotti_site_gallery = Library('kotti_site_gallery', 'static')
-view_css = Resource(lib_kotti_site_gallery, "kotti_site_gallery.css", depends=[ks.view_css])
+view_css = Resource(lib_kotti_site_gallery, "kotti_site_gallery.css",
+                    depends=[ks.view_css])
 
 
 def kotti_configure(settings):
