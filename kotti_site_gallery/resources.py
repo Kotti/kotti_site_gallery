@@ -45,9 +45,11 @@ class Site(Document):
         return None
 
     def get_pictures(self):
+        pictures = []
         for child in self.keys():
             if self[child].type_info.name == Image.type_info.name:
-                yield self[child]
+                pictures.append(self[child])
+        return pictures
 
     def __init__(self, url=None, **kwargs):
         super(Site, self).__init__(in_navigation=False, **kwargs)

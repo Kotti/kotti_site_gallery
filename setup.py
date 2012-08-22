@@ -35,4 +35,8 @@ setup(name='kotti_site_gallery',
         ("**.py",   "lingua_python", None ),
         ("**.pt",   "lingua_xml", None ),
         ]},
+      entry_points="""\
+      [fanstatic.libraries]
+      kotti_site_gallery = kotti_site_gallery:lib_kotti_site_gallery
+      """,
       )

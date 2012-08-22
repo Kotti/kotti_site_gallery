@@ -10,15 +10,26 @@
     <p class="description">
       ${api.context.description}
     </p>
-    <h2 i18n:translate="">Sites</h2>
-    <ul tal:condition="sites" class="site-list">
-      <li tal:repeat="site sites">
-				<div class="site-icon" tal:define="icon site.get_icon()">
-					<a tal:condition="icon != None" href="${api.url(site)}" title="${site.description}"><img src="${api.url(icon, '@@icon-view')}"/></a>
+    <div class="row-fluid" tal:repeat="site sites">
+      <div class="span3">
+				<div tal:define="icon site.get_icon()">
+          <a tal:condition="icon != None" href="${api.url(site)}" title="${site.description}"><img class="site-icon" src="${api.url(icon, 'image')}/span3"/></a>
 				</div>
-				<br />
-        <a href="${api.url(site)}" title="${site.description}">${site.title}</a>
-      </li>
-    </ul>
+      </div>
+      <div class="span9">
+        <h3><a href="${api.url(site)}">${site.title}</a></h3>
+        <p>${site.description}<br/>
+        <a href="${api.url(site)}" i18n:translate="">More...</a>
+        </p>
+        <p>
+          <ul tal:condition="site.tags" class="site-tags">
+            <li tal:repeat="tag site.tags">
+              <a class="btn btn-mini">${tag}</a>
+            </li>
+          </ul>
+          <i class="icon-home"></i>&nbsp;<a href="${site.url}">${site.url}</a>
+        </p>
+      </div>
+    </div>
   </article>
 </html>
