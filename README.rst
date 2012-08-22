@@ -1,6 +1,6 @@
-============
+==================
 kotti_site_gallery
-============
+==================
 
 This is an extension to Kotti that allows to add a site gallery to
 your site.
