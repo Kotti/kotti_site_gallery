@@ -1,3 +1,5 @@
+import colander
+from kotti import DBSession
 from kotti.views.edit import ContentSchema
 from kotti.views.edit import DocumentSchema
 from kotti.views.edit import generic_edit
@@ -17,7 +19,7 @@ class SiteGallerySchema(ContentSchema):
 
 
 class SiteSchema(DocumentSchema):
-    pass
+    url = colander.SchemaNode(colander.String(), title=_("URL"))
 
 
 @ensure_view_selector
@@ -41,9 +43,13 @@ def add_site(context, request):
 
 
 def view_site_gallery(context, request):
-    return {
-        'api': template_api(context, request),
-    }
+    sites = DBSession.query(Site)\
+        .filter(Site.parent_id == context.id)\
+        .all()
+    return dict(
+        api=template_api(context, request),
+        sites=sites,
+    )
 
 
 def includeme_edit(config):

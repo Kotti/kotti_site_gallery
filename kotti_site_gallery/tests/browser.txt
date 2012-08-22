@@ -34,7 +34,7 @@ Add a site gallery
 
   >>> browser.getLink("Add").click()
   >>> browser.getLink("Site gallery").click()
-  >>> "Add site gallery to <em>Welcome to Kotti</em>" in browser.contents
+  >>> "Add Site gallery to <em>Welcome to Kotti</em>" in browser.contents
   True
   >>> ctrl("Title").value = "Cool sites!!"
   >>> ctrl("save").click()
@@ -69,7 +69,7 @@ Add a site
   >>> "Add Site to <em>Boring sites.</em>" in browser.contents
   True
   >>> ctrl("Title").value = "Site number one"
-  >>> ctrl("Url").value = "http://www.example.com"
+  >>> ctrl("URL").value = "http://www.example.com"
   >>> ctrl("Body").value = "Nice, nicer, this site."
   >>> ctrl("save").click()
   >>> "Successfully added item" in browser.contents
@@ -91,17 +91,13 @@ Edit a site gallery
 -------------------
 
   >>> browser.getLink("Site number one").click()
-  >>> "Paris" in browser.contents
-  True
   >>> browser.getLink("Edit").click()
   >>> "Edit <em>Site number one</em>" in browser.contents
   True
-  >>> ctrl("Place").value = "Berlin"
   >>> ctrl("save").click()
   >>> "Your changes have been saved." in browser.contents
   True
-  >>> "Berlin" in browser.contents
-  True
+
 
 Add a site picture
 ------------------
@@ -121,15 +117,4 @@ Add a site picture
   True
   >>> picture_url = testing.BASE_URL + '/cool-sites/site-number-one/a-nice-picture/'
   >>> browser.url == picture_url
-  True
-  >>> 'a-nice-picture/@@inline-view' in browser.contents
-  True
-  >>> browser.open(picture_url + '@@inline-view')
-  >>> simple_png in browser.contents
-  True
-  >>> browser.open(picture_url + '@@thumbnail-view')
-  >>> "\x89PNG" in browser.contents
-  True
-  >>> browser.open(picture_url + '@@icon-view')
-  >>> "\x89PNG" in browser.contents
   True

@@ -6,14 +6,16 @@ class TestSiteImagesMethods(UnitTestBase):
     Test methods which operate on the site's pictures.
     """
     def setUp(self):
-        from kotti_sites.resources import Site
-        self.site = Site('www.frankfurt.de', title=u"Frankfurt", body=u"<b>Foo! The bar.</b>")
+        from kotti_site_gallery.resources import Site
+        self.site = Site('www.frankfurt.de', title=u"Frankfurt",
+                         body=u"<b>Foo! The bar.</b>")
 
         from kotti.resources import Image
         for name in ['foo', 'bar', 'cruz']:
             self.site[name] = Image(name=name, mimetype=u'image/jpeg')
 
-        self.emty_site = Site('www.frankfurt.de', title=u"Frankfurt", body=u"<b>Heyho.</b>")
+        self.emty_site = Site('www.frankfurt.de', title=u"Frankfurt",
+                              body=u"<b>Heyho.</b>")
 
     def test_get_icon(self):
         icon = self.site.get_icon()
