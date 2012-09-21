@@ -13,3 +13,4 @@ lib/
 .installed.cfg
 coverage-*
 nose-*
+kotti_site_gallery.db
