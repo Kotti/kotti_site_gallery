@@ -1,17 +1,18 @@
 import colander
 from kotti import DBSession
+from kotti.security import has_permission
 from kotti.views.edit import ContentSchema
 from kotti.views.edit import DocumentSchema
-from kotti.views.edit import generic_edit
 from kotti.views.edit import generic_add
-from kotti.views.view import view_node
+from kotti.views.edit import generic_edit
 from kotti.views.util import ensure_view_selector
 from kotti.views.util import template_api
-from pyramid.i18n import TranslationStringFactory
-_ = TranslationStringFactory('kotti_site_gallery')
-
-from kotti_site_gallery.resources import SiteGallery
+from kotti.views.view import view_node
 from kotti_site_gallery.resources import Site
+from kotti_site_gallery.resources import SiteGallery
+from pyramid.i18n import TranslationStringFactory
+
+_ = TranslationStringFactory('kotti_site_gallery')
 
 
 class SiteGallerySchema(ContentSchema):
@@ -19,33 +20,42 @@ class SiteGallerySchema(ContentSchema):
 
 
 class SiteSchema(DocumentSchema):
+
     url = colander.SchemaNode(colander.String(), title=_("URL"))
 
 
 @ensure_view_selector
 def edit_site_gallery(context, request):
+
     return generic_edit(context, request, SiteGallerySchema())
 
 
 def add_site_gallery(context, request):
-    return generic_add(context, request, SiteGallerySchema(), SiteGallery,
-                       SiteGallery.type_info.title)
+
+    return generic_add(context, request, SiteGallerySchema(),
+                       SiteGallery, SiteGallery.type_info.title)
 
 
 @ensure_view_selector
 def edit_site(context, request):
+
     return generic_edit(context, request, SiteSchema())
 
 
 def add_site(context, request):
+
     return generic_add(context, request, SiteSchema(), Site,
                        Site.type_info.title)
 
 
 def view_site_gallery(context, request):
+
     sites = DBSession.query(Site)\
         .filter(Site.parent_id == context.id)\
         .all()
+
+    sites = [s for s in sites if has_permission('view', s, request)]
+
     return dict(
         api=template_api(context, request),
         sites=sites,
@@ -53,6 +63,7 @@ def view_site_gallery(context, request):
 
 
 def includeme_edit(config):
+
     config.add_view(
         edit_site_gallery,
         context=SiteGallery,
@@ -85,6 +96,7 @@ def includeme_edit(config):
 
 
 def includeme_view(config):
+
     config.add_view(
         view_site_gallery,
         context=SiteGallery,
@@ -103,6 +115,7 @@ def includeme_view(config):
 
 
 def includeme(config):
+
     config.add_translation_dirs('kotti_site_gallery:locale/')
     includeme_edit(config)
     includeme_view(config)

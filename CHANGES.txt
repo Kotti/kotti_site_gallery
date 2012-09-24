@@ -1,6 +1,18 @@
 History
 =======
 
+0.1.0b3
+-------
+
+- Add workflow support for SiteGallery.
+- Only show Sites in Gallery for which the user has the view permission.
+
+0.1.0b2
+-------
+
+- Add de and en locales.
+- Fix packaging.
+
 0.1.0b1 - 2012/08/22
 --------------------
 
