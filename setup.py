@@ -10,7 +10,7 @@ install_requires = [
 ]
 
 setup(name='kotti_site_gallery',
-      version='0.1.0b2',
+      version='0.1.0b3',
       description="Event collection for Kotti sites",
       long_description=README + '\n\n' + CHANGES,
       classifiers=[

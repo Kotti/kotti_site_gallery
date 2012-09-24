@@ -1,6 +1,12 @@
 History
 =======
 
+0.1.0b3
+-------
+
+- Add workflow support for SiteGallery.
+- Only show Sites in Gallery for which the user has the view permission.
+
 0.1.0b2 - 2012/09/22
 --------------------
 
