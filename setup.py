@@ -5,6 +5,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
+development_requires = ['minify', ]
 install_requires = [
     'Kotti >= 0.7',
 ]
@@ -31,6 +32,7 @@ setup(name='kotti_site_gallery',
       include_package_data=True,
       zip_safe=False,
       install_requires=install_requires,
+      extras_require={'development': development_requires, },
       message_extractors={"kotti_site_gallery": [
           ("**.py", "lingua_python", None),
           ("**.pt", "lingua_xml", None), ]},
