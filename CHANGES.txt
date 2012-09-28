@@ -1,8 +1,12 @@
 History
 =======
+0.1.0b4 - unreleased
+--------------------
 
-0.1.0b3
--------
+- Added minified CSS.
+
+0.1.0b3 - 2012/09/24
+--------------------
 
 - Add workflow support for SiteGallery.
 - Only show Sites in Gallery for which the user has the view permission.
