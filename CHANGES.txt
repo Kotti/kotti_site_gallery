@@ -1,9 +1,13 @@
 History
 =======
+
+
 0.1.0b4 - unreleased
 --------------------
 
 - Added minified CSS.
+- Use form classes for the form views instead of deprecated generic functions.
+
 
 0.1.0b3 - 2012/09/24
 --------------------
