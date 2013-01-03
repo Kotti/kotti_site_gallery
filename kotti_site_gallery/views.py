@@ -1,4 +1,6 @@
 import colander
+from pyramid.i18n import TranslationStringFactory
+
 from kotti import DBSession
 from kotti.security import has_permission
 from kotti.views.edit import ContentSchema
@@ -7,9 +9,9 @@ from kotti.views.form import AddFormView
 from kotti.views.form import EditFormView
 from kotti.views.util import template_api
 from kotti.views.view import view_node
+
 from kotti_site_gallery.resources import Site
 from kotti_site_gallery.resources import SiteGallery
-from pyramid.i18n import TranslationStringFactory
 
 _ = TranslationStringFactory('kotti_site_gallery')
 

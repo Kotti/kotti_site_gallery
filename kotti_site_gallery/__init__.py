@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from fanstatic import Library
 from fanstatic import Resource
+
 from kotti.resources import Image
 from kotti.fanstatic import view_css
 from kotti.fanstatic import view_needed
