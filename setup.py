@@ -7,7 +7,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 development_requires = ['minify', ]
 install_requires = [
-    'Kotti >= 0.7',
+    'Kotti >= 0.8b1',
 ]
 
 setup(name='kotti_site_gallery',
