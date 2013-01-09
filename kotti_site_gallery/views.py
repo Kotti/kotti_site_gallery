@@ -1,16 +1,17 @@
 import colander
+from pyramid.i18n import TranslationStringFactory
+
 from kotti import DBSession
 from kotti.security import has_permission
 from kotti.views.edit import ContentSchema
 from kotti.views.edit import DocumentSchema
-from kotti.views.edit import generic_add
-from kotti.views.edit import generic_edit
-from kotti.views.util import ensure_view_selector
+from kotti.views.form import AddFormView
+from kotti.views.form import EditFormView
 from kotti.views.util import template_api
 from kotti.views.view import view_node
+
 from kotti_site_gallery.resources import Site
 from kotti_site_gallery.resources import SiteGallery
-from pyramid.i18n import TranslationStringFactory
 
 _ = TranslationStringFactory('kotti_site_gallery')
 
@@ -19,33 +20,30 @@ class SiteGallerySchema(ContentSchema):
     pass
 
 
+class SiteGalleryAddForm(AddFormView):
+    schema_factory = SiteGallerySchema
+    add = SiteGallery
+    item_type = _(u"Site gallery")
+
+
+class SiteGalleryEditForm(EditFormView):
+    schema_factory = SiteGallerySchema
+
+
 class SiteSchema(DocumentSchema):
 
     url = colander.SchemaNode(colander.String(), title=_("URL"))
 
 
-@ensure_view_selector
-def edit_site_gallery(context, request):
+class SiteAddForm(AddFormView):
+    schema_factory = SiteSchema
+    add = Site
 
-    return generic_edit(context, request, SiteGallerySchema())
-
-
-def add_site_gallery(context, request):
-
-    return generic_add(context, request, SiteGallerySchema(),
-                       SiteGallery, SiteGallery.type_info.title)
+    item_type = _(u"Site")
 
 
-@ensure_view_selector
-def edit_site(context, request):
-
-    return generic_edit(context, request, SiteSchema())
-
-
-def add_site(context, request):
-
-    return generic_add(context, request, SiteSchema(), Site,
-                       Site.type_info.title)
+class SiteEditForm(EditFormView):
+    schema_factory = SiteSchema
 
 
 def view_site_gallery(context, request):
@@ -65,7 +63,7 @@ def view_site_gallery(context, request):
 def includeme_edit(config):
 
     config.add_view(
-        edit_site_gallery,
+        SiteGalleryEditForm,
         context=SiteGallery,
         name='edit',
         permission='edit',
@@ -73,14 +71,14 @@ def includeme_edit(config):
     )
 
     config.add_view(
-        add_site_gallery,
+        SiteGalleryAddForm,
         name=SiteGallery.type_info.add_view,
         permission='add',
         renderer='kotti:templates/edit/node.pt',
     )
 
     config.add_view(
-        edit_site,
+        SiteEditForm,
         context=Site,
         name='edit',
         permission='edit',
@@ -88,7 +86,7 @@ def includeme_edit(config):
     )
 
     config.add_view(
-        add_site,
+        SiteAddForm,
         name=Site.type_info.add_view,
         permission='add',
         renderer='kotti:templates/edit/node.pt',

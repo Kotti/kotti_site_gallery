@@ -1,9 +1,14 @@
 History
 =======
+
+
 0.1.0b4 - unreleased
 --------------------
 
 - Added minified CSS.
+- Use form classes for the form views instead of deprecated generic functions.
+- Use pytest fixtures instead of UnitTest classes.
+
 
 0.1.0b3 - 2012/09/24
 --------------------

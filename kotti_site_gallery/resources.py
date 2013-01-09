@@ -1,15 +1,16 @@
-from kotti.resources import Content
-from kotti.resources import Document
-from kotti.resources import IContent
-from kotti.resources import IDefaultWorkflow
-from kotti.resources import IDocument
-from kotti.resources import Image
 from pyramid.i18n import TranslationStringFactory
 from sqlalchemy import Column
 from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import String
 from zope.interface import implements
+
+from kotti.interfaces import IContent
+from kotti.interfaces import IDefaultWorkflow
+from kotti.interfaces import IDocument
+from kotti.resources import Content
+from kotti.resources import Document
+from kotti.resources import Image
 
 _ = TranslationStringFactory('kotti_site_gallery')
 
