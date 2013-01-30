@@ -7,7 +7,7 @@ your site.
 
 `Find out more about Kotti`_
 
-Development happens at https://github.com/chrneumann/kotti_site_gallery
+Development happens at https://github.com/Kotti/kotti_site_gallery
 
 Setup
 =====
