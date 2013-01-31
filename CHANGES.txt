@@ -5,6 +5,9 @@ History
 0.1.0b5 - Unreleased
 --------------------
 
+- Use the new `context.children_with_permission` method for the sites
+  overview.  Fixes an issue where sites could not be reordered.
+
 0.1.0b4 - 2013/01/30
 --------------------
 

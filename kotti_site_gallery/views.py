@@ -47,16 +47,9 @@ class SiteEditForm(EditFormView):
 
 
 def view_site_gallery(context, request):
-
-    sites = DBSession.query(Site)\
-        .filter(Site.parent_id == context.id)\
-        .all()
-
-    sites = [s for s in sites if has_permission('view', s, request)]
-
     return dict(
         api=template_api(context, request),
-        sites=sites,
+        sites=context.children_with_permission(request),
     )
 
 
