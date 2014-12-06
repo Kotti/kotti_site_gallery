@@ -10,24 +10,25 @@
     <p class="description">
       ${api.context.description}
     </p>
-    <div class="row-fluid" tal:repeat="site sites">
-      <div class="span3">
+    <div class="row" tal:repeat="site sites">
+      <div class="col-md-3">
 				<div tal:define="icon site.get_icon()">
           <a tal:condition="icon != None" href="${api.url(site)}" title="${site.description}"><img class="site-icon" src="${api.url(icon, 'image')}/span3"/></a>
 				</div>
       </div>
-      <div class="span9">
+      <div class="col-md-9">
         <h3><a href="${api.url(site)}">${site.title}</a></h3>
-        <p>${site.description}<br/>
-        <a href="${api.url(site)}" i18n:translate="">More...</a>
+        <p>
+          ${site.description}
+          <a class="btn btn-primary btn-xs btn-inline" href="${api.url(site)}" i18n:translate="">More...</a>
         </p>
         <p>
           <ul tal:condition="site.tags" class="site-tags">
             <li tal:repeat="tag site.tags">
-              <a class="btn btn-mini">${tag}</a>
+              <span class="label label-sm label-default">${tag}</span>
             </li>
           </ul>
-          <i class="icon-home"></i>&nbsp;<a href="${site.url}">${site.url}</a>
+          <i class="glyphicon glyphicon-home"></i>&nbsp;<a href="${site.url}">${site.url}</a>
         </p>
       </div>
     </div>
