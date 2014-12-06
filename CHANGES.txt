@@ -1,8 +1,8 @@
 History
 =======
 
-0.2
----
+0.2.0 - 2014-12-06
+------------------
 
 - Use Bootstrap 3 and thus require Kotti>=0.10b1.
 - Add i18n.sh skript and recompile catalogs.

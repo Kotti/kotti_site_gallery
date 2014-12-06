@@ -13,7 +13,7 @@ install_requires = [
 
 setup(
     name='kotti_site_gallery',
-    version='0.2.0dev',
+    version='0.2.0',
     description="Site gallery for Kotti sites",
     long_description=README + '\n\n' + CHANGES,
     classifiers=[
