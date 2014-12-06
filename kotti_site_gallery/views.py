@@ -1,8 +1,6 @@
 import colander
 from pyramid.i18n import TranslationStringFactory
 
-from kotti import DBSession
-from kotti.security import has_permission
 from kotti.views.edit import ContentSchema
 from kotti.views.edit import DocumentSchema
 from kotti.views.form import AddFormView
