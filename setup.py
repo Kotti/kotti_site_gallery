@@ -28,7 +28,7 @@ setup(
     keywords='kotti site gallery',
     author='Kotti developers',
     author_email='kotti@googlegroups.com',
-    url='http://pypi.python.org/pypi/kotti_site_gallery',
+    url='https://github.com/Kotti/kotti_site_gallery',
     license='BSD-2-Clause',
     packages=find_packages(),
     include_package_data=True,
