@@ -14,6 +14,8 @@ Setup
 
 To enable the extension in your Kotti site, activate the configurator:
 
+.. code-block:: ini
+
   kotti.configurators = kotti_site_gallery.kotti_configure
 
 .. _Find out more about Kotti: http://pypi.python.org/pypi/Kotti
